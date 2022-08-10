@@ -36,7 +36,10 @@
             flex flex-col
             justify-center
             items-center
-          " v-for="(photo, index) in photos" :key="index">
+          "
+          v-for="(photo, index) in photos"
+          :key="index"
+        >
           <!-- <div class="mb-8">
             <img
               class="object-center object-cover rounded-full h-36 w-36"
@@ -49,24 +52,24 @@
             <p class="text-base text-gray-400 font-normal">Software Engineer</p>
           </div>
         </div> -->
-        <!-- Axios -->
+          <!-- Axios -->
 
           <div class="mb-8">
             <div >
               <img
                 class="object-center object-cover rounded-full h-36 w-36"
-                src="{{ photo.thumbnailUrl }}"
-                alt="{{ photo.thumbnailUrl }}"
+                src="https://source.unsplash.com/user/c_v_r"
+                alt="photo"
               />
 
               <div class="text-center">
                 <p class="text-xl text-white font-bold mb-2">
                   {{ photo.title }}
                 </p>
-                <p class="text-base text-gray-400 font-normal">Dev Ops</p>
+                <p class="text-base text-gray-400 font-normal">{{photo.id}}</p>
               </div>
             </div>
-          </div> 
+          </div>
 
           <!-- fin del Axios -->
           <!-- <div
@@ -194,8 +197,8 @@
               <p class="text-xl text-white font-bold mb-2">Jade Bradley</p>
               <p class="text-base text-gray-400 font-normal">Dev Ops</p>
             </div>
-          </div>--> 
-        </div> 
+          </div>-->
+        </div>
       </div>
     </section>
   </div>
@@ -204,7 +207,7 @@
 <script>
 import axios from "axios";
 export default {
-   created() {
+  await created() {
     axios
       .get("https://jsonplaceholder.typicode.com/photos")
       .then((response) => (this.photos = response.data));
@@ -213,6 +216,7 @@ export default {
     return {
       name: "Paulo",
       photos: [],
+      image: 'https://source.unsplash.com/user/c_v_r'
     };
   },
 };
