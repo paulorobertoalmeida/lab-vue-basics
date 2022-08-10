@@ -14,7 +14,7 @@
             text-white
           "
         >
-          Lab Basic Vue
+          Lab Basic Vue Math {{ 2 + 2}}
         </h1>
       </div>
       <div
@@ -37,8 +37,7 @@
             justify-center
             items-center
           "
-          v-for="(photo, index) in photos"
-          :key="index"
+          v-for="user in users" :key="user"
         >
           <!-- <div class="mb-8">
             <img
@@ -58,15 +57,15 @@
             <div >
               <img
                 class="object-center object-cover rounded-full h-36 w-36"
-                src="https://source.unsplash.com/user/c_v_r"
+                src="{{{user.picture}}}"
                 alt="photo"
               />
 
               <div class="text-center">
                 <p class="text-xl text-white font-bold mb-2">
-                  {{ photo.title }}
+                  {{ user.name }} {{ user.name }}
                 </p>
-                <p class="text-base text-gray-400 font-normal">{{photo.id}}</p>
+                <p class="text-base text-gray-400 font-normal">{{user.location}}</p>
               </div>
             </div>
           </div>
@@ -207,16 +206,15 @@
 <script>
 import axios from "axios";
 export default {
-  await created() {
-    axios
-      .get("https://jsonplaceholder.typicode.com/photos")
-      .then((response) => (this.photos = response.data));
+   async created() {
+   await axios
+      .get("https://randomuser.me/api/?results=10")
+      .then((response) => (this.users = response.data));
   },
   data() {
     return {
       name: "Paulo",
-      photos: [],
-      image: 'https://source.unsplash.com/user/c_v_r'
+      users: [],
     };
   },
 };
